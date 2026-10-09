@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>My Secret Diary - Nasreen</title>
+<style>
+body{margin:0;font-family:sans-serif;background:#0f0f12;color:#fff;display:flex;min-height:100vh;align-items:center;justify-content:center;padding:20px}
+.card{background:#1c1c20;border-radius:20px;padding:25px;width:100%;max-width:380px;box-shadow:0 10px 30px rgba(0,0,0,.5);text-align:center}
+h1{font-size:22px;margin-bottom:10px}
+p{color:#aaa;font-size:14px}
+input{width:100%;padding:14px;border-radius:10px;border:none;margin:15px 0;background:#2a2a30;color:#fff;font-size:16px;box-sizing:border-box}
+button{width:100%;padding:14px;border:none;border-radius:10px;background:#7c5cff;color:#fff;font-size:16px;font-weight:bold}
+.diary{display:none;text-align:left}
+textarea{width:100%;height:200px;background:#2a2a30;color:#fff;border:none;border-radius:10px;padding:12px;box-sizing:border-box;margin-top:10px}
+.hidden{color:#ff6b6b;font-size:13px;display:none;margin-top:10px}
+</style>
+</head>
+<body>
+<div class="card" id="lock">
+<h1>🔒 Secret Diary</h1>
+<p>Only for Nasreen - Enter password</p>
+<input type="password" id="pass" placeholder="Password likho">
+<button onclick="unlock()">Unlock</button>
+<div class="hidden" id="err">Galat password! Try again</div>
+<p style="margin-top:15px;font-size:11px">Default password: nasreen123 <br> (baad me change kar sakti ho)</p>
+</div>
+
+<div class="card diary" id="diary">
+<h1>📖 My Hidden Pages</h1>
+<p>Yahan apni dil ki baat likho - koi nahi dekhega</p>
+<textarea id="text" placeholder="Aaj kya hua..."></textarea>
+<button onclick="save()" style="margin-top:15px;background:#2ecc71">Save Diary</button>
+<p id="saved" style="display:none;color:#2ecc71;margin-top:10px;font-size:13px">Saved! ✅</p>
+<button onclick="lock()" style="margin-top:10px;background:#333">Lock Again</button>
+</div>
+
+<script>
+const MY_PASS = "23032007@NF14";
+function unlock(){
+ let p=document.getElementById('pass').value;
+ if(p===MY_PASS){
+  document.getElementById('lock').style.display='none';
+  document.getElementById('diary').style.display='block';
+  document.getElementById('text').value=localStorage.getItem('nasreen_diary')||'';
+  document.getElementById('err').style.display='none';
+ } else {
+  document.getElementById('err').style.display='block';
+ }
+}
+function save(){
+ localStorage.setItem('nasreen_diary',document.getElementById('text').value);
+ let s=document.getElementById('saved');s.style.display='block';
+ setTimeout(()=>s.style.display='none',2000);
+}
+function lock(){
+ document.getElementById('diary').style.display='none';
+ document.getElementById('lock').style.display='block';
+ document.getElementById('pass').value='';
+}
+</script>
+</body>
+  </html>

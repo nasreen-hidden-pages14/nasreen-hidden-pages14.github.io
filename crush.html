@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>For You ❤️</title>
+<style>
+body{background:#ffe6ee;display:flex;justify-content:center;align-items:center;min-height:100vh;font-family:sans-serif}
+.box{background:white;padding:30px;border-radius:20px;box-shadow:0 8px 30px #0002;max-width:400px;width:90%;text-align:center}
+input{width:90%;padding:12px;margin:10px;border-radius:10px;border:1px solid #ccc}
+button{padding:12px 25px;background:#ff3366;color:white;border:none;border-radius:10px;font-size:16px}
+#letter{display:none;text-align:left;line-height:1.7}
+</style>
+</head>
+<body>
+<div class="box">
+<div id="lock">
+<h2>🔒 Secret For You</h2>
+<p>Password daalo toh dil ki baat khulegi</p>
+<input type="password" id="pass" placeholder="Password">
+<br><button onclick="unlock()">Open ❤️</button>
+<p id="err" style="color:red"></p>
+</div>
+
+<div id="letter">
+<h2>Heyy... ❤️</h2>
+<p>
+Tumhare liye likh rahi hu...
+
+Mujhe tum bahut pasand ho. Jab se tumhe dekha hai tab se bas tumhare baare me sochti rehti hu.
+
+Tumhari smile, tumhari baatein sab yaad rehti hai.
+
+Pata nahi tum mere baare me kya sochte ho, par main ye bolna chahti thi.
+
+Ek baar tum bhi mujhe us nazar se dekhna jis nazar se main tumhe dekhti hoon.
+Bas yahi meri chhoti si khwahish hai kaash tum bhi kabhi mere dil ke ehsaason ko samajh paao.
+
+- Tumhari Nasreen ❤️
+</p>
+</div>
+</div>
+
+<script>
+function unlock(){
+  if(document.getElementById('pass').value==='23032007'){
+    document.getElementById('lock').style.display='none';
+    document.getElementById('letter').style.display='block';
+  } else {
+    document.getElementById('err').innerText='Galat password, fir se try karo';
+  }
+}
+</script>
+</body>
+</html>
